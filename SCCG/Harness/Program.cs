@@ -3,12 +3,15 @@ using Engine;
 using Models.Harness.GameObservation;
 using Models.Harness;
 using Harness;
+using System.Threading.Tasks;
+using Data;
+using Models.Data;
 
 namespace SCCG
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task<int> Main(string[] args)
         {
             Console.WriteLine(@"
 ========================= 
@@ -22,12 +25,19 @@ This Harness was intended to be used as a development tool for the game.
 
             Console.WriteLine(">> Creating Game        <<");
 
-            GameHandle newGameHandle = EntryPoint.CreateNewGame();
+            DeckLoadout humanPlayerDeck = await MockupDataGenerator.GetSimpleDeck();
+            DeckLoadout aiPlayerDeck = await MockupDataGenerator.GetSimpleDeck();
+            GameHandle newGameHandle = EntryPoint.CreateNewGame(humanPlayerDeck, aiPlayerDeck);
             newGameHandle.AssignGamePlayer(MakeHumanPlayer(), 0);
             newGameHandle.AssignGamePlayer(MakeAIPlayer(), 1);
 
             PrintGameState(newGameHandle);
-            EntryPoint.BeginNewGame(newGameHandle);
+
+            Task gameplayTask = EntryPoint.BeginNewGame(newGameHandle);
+            gameplayTask.Wait();
+            Console.WriteLine("Press anything to end");
+
+            return await Task.FromResult(0);
         }
 
         static void PrintGameState(GameHandle state)
