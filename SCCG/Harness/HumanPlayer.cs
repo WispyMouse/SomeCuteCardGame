@@ -1,4 +1,5 @@
-﻿using Models.Harness;
+﻿using Models.GameplayModels.GameplayActions;
+using Models.Harness;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,11 +9,11 @@ namespace Harness
 {
     class HumanPlayer : IGamePlayer
     {
-        public async Task StartTurnAsync()
+        public async Task<IGameplayAction> StartTurnAsync()
         {
             Console.Write("Press Enter to pass the turn:");
             Console.ReadLine();
-            await Task.CompletedTask;
+            return new PassTheTurnAction();
         }
     }
 }
