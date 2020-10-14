@@ -7,9 +7,9 @@ namespace Models.GameplayModels
 {
     public class Hand
     {
-        public List<ICard> Cards = new List<ICard>();
+        public List<Card> Cards = new List<Card>();
 
-        public void AddCard(ICard newCard)
+        public void AddCard(Card newCard)
         {
             Cards.Add(newCard);
         }

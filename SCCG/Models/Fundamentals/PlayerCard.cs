@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Models.Fundamentals
 {
-    public interface ICard
+    public class PlayerCard : Card
     {
     }
 }

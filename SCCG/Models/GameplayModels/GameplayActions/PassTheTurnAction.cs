@@ -5,9 +5,9 @@ using Models.Harness;
 
 namespace Models.GameplayModels.GameplayActions
 {
-    public class PassTheTurnAction : IGameplayAction
+    public class PassTheTurnAction : GameplayAction
     {
-        public void DoTheThing(GameHandle handle)
+        public override void DoTheThing(GameHandle handle)
         {
             // uhh iunno do the thing
         }

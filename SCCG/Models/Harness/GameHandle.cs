@@ -27,7 +27,7 @@ namespace Models.Harness
             {
                 observations.Add(new LoggingObservation($"Player {curIndex}; # Hand {CurrentDecks[curIndex].CurHand.Cards.Count}; # Numbers Deck {CurrentDecks[curIndex].NumberCards.Cards.Count}; # Tech Deck {CurrentDecks[curIndex].TechCards.Cards.Count}"));
 
-                foreach (ICard curCard in CurrentDecks[curIndex].CurHand.Cards)
+                foreach (Card curCard in CurrentDecks[curIndex].CurHand.Cards)
                 {
                     Console.WriteLine($"* {curCard.ToString()}");
                 }

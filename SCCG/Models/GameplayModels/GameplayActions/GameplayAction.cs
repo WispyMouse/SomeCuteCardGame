@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Models.GameplayModels.GameplayActions
 {
-    public interface IGameplayAction
+    public abstract class GameplayAction
     {
-        void DoTheThing(GameHandle handle);
+        public abstract void DoTheThing(GameHandle handle);
     }
 }

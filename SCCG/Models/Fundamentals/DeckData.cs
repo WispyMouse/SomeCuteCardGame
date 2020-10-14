@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Models.Fundamentals
 {
-    public class DeckData<T> where T : ICard
+    public class DeckData<T> where T : Card
     {
         public List<T> Cards = new List<T>();
 

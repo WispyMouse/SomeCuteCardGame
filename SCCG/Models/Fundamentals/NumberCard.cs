@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Models.Fundamentals
 {
-    public class NumberCard : ICard
+    public class NumberCard : Card
     {
         public int FaceValue;
 

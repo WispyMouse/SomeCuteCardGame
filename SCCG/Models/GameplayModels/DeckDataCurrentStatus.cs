@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Models.GameplayModels
 {
-    public class DeckDataCurrentStatus<T> where T : ICard
+    public class DeckDataCurrentStatus<T> where T : Card
     {
         public List<T> Cards = new List<T>();
 

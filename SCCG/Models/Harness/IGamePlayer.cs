@@ -9,6 +9,7 @@ namespace Models.Harness
 {
     public interface IGamePlayer
     {
-        Task<IGameplayAction> StartTurnAsync();
+        Task<GameplayStartAction> GameplayStartAsync();
+        Task<GameplayAction> StartTurnAsync();
     }
 }

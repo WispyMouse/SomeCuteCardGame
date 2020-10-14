@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Models.Fundamentals
 {
-    public class TechCard : Card
+    public abstract class Card
     {
     }
 }

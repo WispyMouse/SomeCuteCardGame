@@ -22,11 +22,21 @@ namespace Engine
 
         public static async Task BeginNewGame(GameHandle handle)
         {
+            await EstablishStartingField(handle);
+
             await DealStartingHands(handle);
 
             IGamePlayer player = handle.NextPlayer();
-            IGameplayAction actionTaken = await player.StartTurnAsync();
+            GameplayAction actionTaken = await player.StartTurnAsync();
             await TakeAction(handle, actionTaken);
+        }
+
+        private static async Task EstablishStartingField(GameHandle handle)
+        {
+            foreach (IGamePlayer curPlayer in handle.Players.Values)
+            {
+                await curPlayer.GameplayStartAsync();
+            }
         }
 
         private static async Task DealStartingHands(GameHandle handle)
@@ -50,11 +60,11 @@ namespace Engine
             }
         }
 
-        public static async Task TakeAction(GameHandle handle, IGameplayAction action)
+        public static async Task TakeAction(GameHandle handle, GameplayAction action)
         {
             action.DoTheThing(handle);
             IGamePlayer player = handle.NextPlayer();
-            IGameplayAction actionTaken = await player.StartTurnAsync();
+            GameplayAction actionTaken = await player.StartTurnAsync();
             await TakeAction(handle, actionTaken);
         }
     }

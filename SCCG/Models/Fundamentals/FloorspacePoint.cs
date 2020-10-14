@@ -4,7 +4,9 @@ using System.Text;
 
 namespace Models.Fundamentals
 {
-    public class TechCard : Card
+    public class FloorspacePoint
     {
+        public int X;
+        public int Y;
     }
 }
